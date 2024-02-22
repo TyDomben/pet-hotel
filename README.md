@@ -254,6 +254,7 @@ Server: Kestrel
 ### Deleting the Pet Owner
 
 ```
+
 $ curl -H "Content-Type: application/json" -X DELETE -i http://localhost:5000/api/petOwners/76
 HTTP/1.1 204 No Content
 Date: Tue, 21 Jul 2020 03:40:02 GMT
