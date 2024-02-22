@@ -56,5 +56,13 @@ namespace pet_hotel.Controllers
             return petOwner;
             // this id is the id of the pet owner we are updating
         }
+        //!delete route by id of pet owner
+        [HttpDelete("{id}")]
+        public void DeleteOwner(int id)
+        {
+            PetOwner petOwner = _context.PetOwnerTable.Find(id);
+            _context.Remove(petOwner);
+            _context.SaveChanges();
+        }
     }
 }
