@@ -18,8 +18,13 @@ namespace pet_hotel
         public string name { get; set; }
 
         [Required]
+        [EmailAddress]
+        // https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute?view=net-8.0
+
         public string emailAddress { get; set; }
 
+        // not mapped is 
+        [NotMapped]
         public int petCount { get; set; }
 
 
