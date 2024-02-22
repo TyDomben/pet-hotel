@@ -2,39 +2,42 @@
 
 This is a standard c-sharp project that was started with `dotnet new webapi --no-https -n project-name`. In addition:
 
-  - It has dotnet 6 as its version. If you installed 7, for example, in the `pet-hotel.csproj` file, change the target framework to:
+- It has dotnet 6 as its version. If you installed 7, for example, in the `pet-hotel.csproj` file, change the target framework to:
   `<TargetFramework>net7.0</TargetFramework>`
 
-  - Postgres support is added and ready to go. The connection string can be updated in `appsettings.json`.
- 
-  - Client App is in different Repo: https://github.com/PrimeAcademy/pethotel-dotnet-frontend
+- Postgres support is added and ready to go. The connection string can be updated in `appsettings.json`.
 
-The client is available at `http://localhost:3000` and set up to proxy 
+- Client App is in different Repo: <https://github.com/PrimeAcademy/pethotel-dotnet-frontend>
+
+The client is available at `http://localhost:3000` and set up to proxy
 back to the dotnet API. The dotnet API is available at `http://localhost:5000/` and ALSO set up to proxy non-api requests to the webpack server. Both should work, although the convention for dotnet is to go directly through the dotnet app @ `http://localhost:5000`.
 
 ## Screenshots
+
 ### Pet Hotel UI (working with base goals met)
+
 ![Pet Hotel Screenshot](pet-hotel.png)
 
 >> NOTE: The Pet Count column is a Stretch Goal!
 
 ### Passing Tests (npm test)
+
 ![Passing Tests](tests.png)
 
 ## Project Requirements
 
 Your job is to build the backend for the Pet Hotel! The React App is
-ready to go. For base mode you do not need to update the React App at all. Simply clone the frontend, run `npm install`, and 
+ready to go. For base mode you do not need to update the React App at all. Simply clone the frontend, run `npm install`, and
 `npm start` to run the client application. Build the HTTP API until all of the functionality of the Client App is working:
 
-   - All 11 jest tests are passing (see below)
-   - Loading the page shows Pets and Pet Owners in the table.
-   - User can add a new Pet Owner (and see error validations).
-   - User can add new Pets, associated with pet owners (and see error validations).
-   - User can check in a pet and see the timestamp on the table.
-   - User can check out a pet.
-   - User can delete pets.
-   - User can delete pet owners.
+- All 11 jest tests are passing (see below)
+- Loading the page shows Pets and Pet Owners in the table.
+- User can add a new Pet Owner (and see error validations).
+- User can add new Pets, associated with pet owners (and see error validations).
+- User can check in a pet and see the timestamp on the table.
+- User can check out a pet.
+- User can delete pets.
+- User can delete pet owners.
 
 Your general approach should be like so:
 
@@ -49,27 +52,27 @@ A recommended approach would be to start with PetOwners, since they're the simpl
 
 ### Stretch Goals
 
-  - Have fun with the styling! Change things around, swap colors/fonts/textures, etc. 
-  - Be able to count and show how many Pets are assoicated with Owners -- The front end is setup to recieve it already.
-  - Create a new resource: `Transaction`. This transaction tracks the history of the hotel. A new transaction is created whenever a pet is checked in or checked out, a pet is created or deleted, or a pet owner is created or deleted, etc. It could be a simple timestamp and string of what happenens.
-    - Create the model
-    - Add the model to the ApplicationContext
-    - Create the database migration
-    - Create the controller
-    - Create the relevant jest tests
-    - Show all recent transactions in the react app.
-  - Add a profile image to your pets (via internet URL) or a drop-down of available URLs. You'll need to add the field and migration for the new field. Consider Updating the tests to check that images make it!
-  - Use the model validations returned from the server to highlight which fields have the validation error. Hint: The error coming back will often contain the field name, which will match the name of the element on the form. See sourdough bakery for examples (the React App already has plumbing for default validation message format).
-  - Add the ability to edit pet names
-  - Add the ability to edit pet owners' name, email address
-  - Add pagination to one (or all) of the resources. You can do this with optional parameters: `/api/petowners/?start=0&limit=10`, next page: `/api/petowners/?start=10&limit=10` etc. `Transaction` would benefit greatly from this.
-  - Move alerts up to global redux state and share alert state between the tables
-  - Move alerts to be 'toasts': they show up in the corner and auto-dismiss themselves after 5 seconds.
-  - Prevent the PetOwner from being deleted if they have any pets that are checked in.
-  - If a pet is deleted and their owner no longer has any pets in the hotel, delete the owner too.
-  - Add a 'Are you sure?' prompt to the delete buttons on the client app.
-  - Add additional tests to test for proper validation errors.
-  - Deploy to Heroku using the dotnet buildpack (See cohort notes for more info).
+- Have fun with the styling! Change things around, swap colors/fonts/textures, etc.
+- Be able to count and show how many Pets are assoicated with Owners -- The front end is setup to recieve it already.
+- Create a new resource: `Transaction`. This transaction tracks the history of the hotel. A new transaction is created whenever a pet is checked in or checked out, a pet is created or deleted, or a pet owner is created or deleted, etc. It could be a simple timestamp and string of what happenens.
+  - Create the model
+  - Add the model to the ApplicationContext
+  - Create the database migration
+  - Create the controller
+  - Create the relevant jest tests
+  - Show all recent transactions in the react app.
+- Add a profile image to your pets (via internet URL) or a drop-down of available URLs. You'll need to add the field and migration for the new field. Consider Updating the tests to check that images make it!
+- Use the model validations returned from the server to highlight which fields have the validation error. Hint: The error coming back will often contain the field name, which will match the name of the element on the form. See sourdough bakery for examples (the React App already has plumbing for default validation message format).
+- Add the ability to edit pet names
+- Add the ability to edit pet owners' name, email address
+- Add pagination to one (or all) of the resources. You can do this with optional parameters: `/api/petowners/?start=0&limit=10`, next page: `/api/petowners/?start=10&limit=10` etc. `Transaction` would benefit greatly from this.
+- Move alerts up to global redux state and share alert state between the tables
+- Move alerts to be 'toasts': they show up in the corner and auto-dismiss themselves after 5 seconds.
+- Prevent the PetOwner from being deleted if they have any pets that are checked in.
+- If a pet is deleted and their owner no longer has any pets in the hotel, delete the owner too.
+- Add a 'Are you sure?' prompt to the delete buttons on the client app.
+- Add additional tests to test for proper validation errors.
+- Deploy to Heroku using the dotnet buildpack (See cohort notes for more info).
 
 ## HTTP API Requirements
 
@@ -90,10 +93,10 @@ This project is ready to go with a suite of tests that hit the expected endpoint
 
 The Pet Owner object is very simple, consisting of just four fields:
 
-  - `int id`: primary key
-  - `string name` (required): the name of the pet owner
-  - `string emailAddress` (required, validated format): the email address of the pet owner
-  - `int petCount`: The number of pets owned by this person. This is not a database column, but a dynamically generated field based on the count of foreign keys that point to this owner in the database. See the `[NotMapped]` model attribute for more information. Consider using an entity-mapped `List<Pet>` property to keep track of this, utilizing the `[JsonIgnore]` attribute to prevent a circular reference on the outgoing API serialization.
+- `int id`: primary key
+- `string name` (required): the name of the pet owner
+- `string emailAddress` (required, validated format): the email address of the pet owner
+- `int petCount`: The number of pets owned by this person. This is not a database column, but a dynamically generated field based on the count of foreign keys that point to this owner in the database. See the `[NotMapped]` model attribute for more information. Consider using an entity-mapped `List<Pet>` property to keep track of this, utilizing the `[JsonIgnore]` attribute to prevent a circular reference on the outgoing API serialization.
 
 A Pet Owner Object looks like this:
 
@@ -110,12 +113,12 @@ A Pet Owner Object looks like this:
 
 The Pet Object contains basic information about a pet, including physical properties, owner information, and check-in information.
 
-  - `int id`: primary key
-  - `string name` (required): The pet name
-  - `PetBreed breed` (required): Pet breed, based on the `PetBreed` enum.
-  - `PetColor color` (required): Pet color, based on the `PetColor` enum.
-  - `DateTime checkedInAt` (nullable): The time that this pet was checked in. If `null`, the pet has not been checked in yet.
-  - `int petOwnerid` (required): A foreign key link to the pet owner that owns this pet. Set up the foriegn key link with a `PetOwner petOwner` property on the `Pet` model.
+- `int id`: primary key
+- `string name` (required): The pet name
+- `PetBreed breed` (required): Pet breed, based on the `PetBreed` enum.
+- `PetColor color` (required): Pet color, based on the `PetColor` enum.
+- `DateTime checkedInAt` (nullable): The time that this pet was checked in. If `null`, the pet has not been checked in yet.
+- `int petOwnerid` (required): A foreign key link to the pet owner that owns this pet. Set up the foriegn key link with a `PetOwner petOwner` property on the `Pet` model.
 
  A Pet Object looks like this:
 
@@ -138,12 +141,13 @@ The Pet Object contains basic information about a pet, including physical proper
 
 ### PetBreed and PetColor Enums
 
-Ideally you will create a PetBreed Enum and PetColor Enum to limit the available options. 
+Ideally you will create a PetBreed Enum and PetColor Enum to limit the available options.
 
-  - PetBreed: Must contain at least: `Shepherd`, `Poodle`, `Beagle`, `Bulldog`, `Terrier`, `Boxer`, `Labrador`, `Retriever`, 
-  - PetColor: Must contain at least: `White`, `Black`, `Golden`, `Tricolor`, `Spotted`
+- PetBreed: Must contain at least: `Shepherd`, `Poodle`, `Beagle`, `Bulldog`, `Terrier`, `Boxer`, `Labrador`, `Retriever`,
+- PetColor: Must contain at least: `White`, `Black`, `Golden`, `Tricolor`, `Spotted`
 
 ### Pet Owner API
+
 `/api/petowners` is the base URL for the Pet Owner API
 
 `GET /api/petowners/` should return a list of pet owner objects. A Pet Owner should have a read-only `petCount` field that contains the number of pets that belong to the pet owner.
@@ -157,6 +161,7 @@ Ideally you will create a PetBreed Enum and PetColor Enum to limit the available
 `PUT /api/petowners/:id` should update the Pet Owner with the given primary key (id). The HTTP Body should include the entire Pet Owner object to be updated with all required keys, including the `id`.
 
 ### Pet API
+
 `/api/pets` is the base URL for the Pet Owner API.
 
 `GET /api/pets` should return a list of pet objects. Each pet should contain a nested `petOwner` field that contains the full `PetOwner` object that owns this pet. Be sure that the `PetOwner` object does not additionally curcularly reference the pets owned.
@@ -188,6 +193,7 @@ curl -H "Content-Type: application/json" -X POST --data '{"name": "Frank Zappa",
 ```
 
 ### Creating a pet associated with the pet owner
+
 ``` bash
 $ curl -H "Content-Type: application/json" -X POST --data '{"name": "Fido", "breed": "bulldog", "color": "Black", "petOwnerid": 76}' http://localhost:5000/api/pet
 {
@@ -246,6 +252,7 @@ Server: Kestrel
 ```
 
 ### Deleting the Pet Owner
+
 ```
 $ curl -H "Content-Type: application/json" -X DELETE -i http://localhost:5000/api/petOwners/76
 HTTP/1.1 204 No Content
