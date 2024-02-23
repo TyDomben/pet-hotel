@@ -63,13 +63,18 @@ namespace pet_hotel.Controllers
         }
 
         [HttpPost]
-
-        public Pet PostPet(Pet pet)
+        public IActionResult PostPet(Pet pet)
         {
             _context.Add(pet);
             _context.SaveChanges();
-            return pet;
+            return CreatedAtAction(nameof(PostPet), new {pet.id}, pet);
         }
+        // public Pet PostPet(Pet pet)
+        // {
+        //     _context.Add(pet);
+        //     _context.SaveChanges();
+        //     return pet;
+        // }
 
         [HttpDelete("{id}")]
         public void DeletePet(int id)
