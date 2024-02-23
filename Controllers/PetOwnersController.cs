@@ -39,12 +39,13 @@ namespace pet_hotel.Controllers
         }
 
         [HttpPost]
-        public PetOwner PostOwner(PetOwner petOwner)
+        public IActionResult PostOwner(PetOwner petOwner)
         {
             _context.Add(petOwner);
             _context.SaveChanges();
-            return petOwner;
+            return CreatedAtAction(nameof(PostOwner), new {petOwner.id}, petOwner);
         }
+        
         [HttpPut("{id}")]
         // this id is the id of the pet owner we are updating
         public PetOwner PutOwner(int id, PetOwner petOwner)
