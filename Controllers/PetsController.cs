@@ -77,11 +77,12 @@ namespace pet_hotel.Controllers
         // }
 
         [HttpDelete("{id}")]
-        public void DeletePet(int id)
+        public ActionResult DeletePet(int id)
         {
             Pet pet = _context.PetTable.Find(id);
             _context.Remove(pet);
             _context.SaveChanges();
+            return NoContent();
         }
 
         [HttpPut("{id}")]
